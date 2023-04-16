@@ -1,5 +1,5 @@
 # Table-Maker-Website
 Make a simple table !
 
-- index.html is the index file
+- open index.html for the first page
 - src_code.html is basically just the source code, i added it to practice CSS
