@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>T A B L E   M A K E R</title>
+        <meta name="description" content="*Insert catchy desciption here* ">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="table_icon.png">
+
+
+        <style>
+            * {
+                font-size: 140%;
+            }
+            
+            body {
+                width: -moz-fit-content;
+                width: fit-content;
+            }
+            
+            h1 {
+                font-family:'Verdana';
+                font-weight: 1000;
+                text-decoration:overline;
+                font-size: 200%;
+                letter-spacing: 3px;
+            
+                -webkit-user-select: none;
+                user-select: none;
+            }
+            
+            p, div {
+                font-family:'Verdana';
+                font-size: 125%;
+                letter-spacing: 1px;
+            
+                -webkit-user-select: none;
+                user-select: none;
+            }
+            
+            nav {
+                font-size: 75%;
+            }
+            
+            #tableEditButtons {
+                -webkit-user-select: none;
+                user-select: none;
+            }
+            
+            #button_tableAddRow, #button_tableAddColumn{
+                width: -moz-fit-content;
+                width: fit-content;
+            
+                background-image: linear-gradient(rgb(109, 104, 195), rgb(177, 173, 251));
+            
+                text-align: center;
+                font-family:'Verdana';
+                font-weight: bolder;
+                font-size: 75%;
+                color: rgb(246, 246, 246);
+                text-shadow: rgb(0, 0, 0) 0.5px 0.5px 1px;
+                background-color: rgb(109, 104, 195);
+                border: 2px solid rgb(116, 116, 116);
+            
+                border-radius: 10px;
+                padding-top: 2%;
+                padding-bottom: 2%;
+            
+                transition: background-image 0.25s, letter-spacing 0.25s, text-shadow 0.5s, color 0.15s;
+            
+                -webkit-user-select: none;
+                user-select: none;
+            
+            } #button_tableAddRow:hover, #button_tableAddColumn:hover{
+                background-image: linear-gradient(rgb(39, 121, 176),rgb(119, 134, 251));
+                color: rgb(200, 200, 220);
+                text-shadow: black 8px 8px 4px;
+                letter-spacing: 10px;
+                cursor: pointer;
+            }#button_tableAddRow:active, #button_tableAddColumn:active {
+                color: rgb(27, 27, 27);
+                text-shadow: black 4px 4px 4px;
+                letter-spacing: 7px;
+                cursor: grabbing;
+            }
+            
+            
+            #button_tableReloadButton {
+                width: -moz-fit-content;
+                width: fit-content;
+            
+                background-image: linear-gradient(rgb(238, 70, 70), rgb(255, 102, 102));
+            
+                text-align: center;
+                font-family:'Verdana';
+                font-weight: bolder;
+                font-size: 75%;
+                color: rgb(246, 246, 246);
+                text-shadow: rgb(0, 0, 0) 0.5px 0.5px 1px;
+                background-color: rgb(109, 104, 195);
+                border: 2px solid rgb(116, 116, 116);
+            
+                border-radius: 10px;
+                padding-top: 2%;
+                padding-bottom: 2%;
+            
+                transition: background-image 0.25s, letter-spacing 0.25s, text-shadow 0.5s, color 0.15s;
+            
+                -webkit-user-select: none;
+                user-select: none;
+            
+            } #button_tableReloadButton:hover {
+                background-image: linear-gradient(rgb(255, 81, 65),rgb(215, 37, 34));
+                color: rgb(200, 200, 220);
+                text-shadow: black 8px 8px 4px;
+                letter-spacing: 10px;
+                cursor: pointer;
+            }#button_tableReloadButton:active {
+                color: rgb(27, 27, 27);
+                text-shadow: black 4px 4px 4px;
+                letter-spacing: 7px;
+                cursor: grabbing;
+            }
+            
+            
+            div.code {
+                font-size: 100%;
+                font-family: "Courier New";
+            
+                padding-right: 10%;
+                padding-left: 10%;
+                padding-top: 5%;
+                padding-bottom: 5%;
+            
+                margin-top: 4%;
+                margin-bottom: 4%;
+                margin-left: 10%;
+                
+                width: -moz-fit-content;
+                width: fit-content;
+            
+                border: 1px solid rgb(22, 22, 22);
+                border-radius: 10px;
+                background: aqua;
+                background-color: rgb(228, 228, 228);
+            
+                transition: background-color 0.25s, border-color 0.25s;
+            } div.code:hover {
+                background-color: rgb(240, 240, 240);
+                border-color: rgb(144, 144, 144);
+            
+                cursor: text;
+            }
+            
+            table {
+                font-size: 75%;
+                
+                margin-top: 7%;
+                margin-left: 3%;
+                margin-right: 15%;
+                font-size: 50%;
+            
+                border-collapse: collapse;
+            }
+            
+            a {
+                color: rgb(0, 128, 86);
+                font-size: 90%;
+                transition: text-shadow 0.1s, color 0.05s;
+            } a:hover {
+                text-shadow: 2px 2px 3px rgb(0, 74, 68);
+            } a:active {
+                color: rgb(145, 255, 218);
+            }
+            
+            .newCellInput {
+                background-color: rgb(238, 255, 255);
+                margin: none;
+                border-collapse: collapse;
+                width: 100%;
+                padding-bottom: 5%;
+                padding-top: 5%;
+                padding-left: 5%;
+                padding-right: 5%;
+                font-size: 125%;
+            
+                transition: background-color 0.25s, letter-spacing 0.25s, font-weight 0.55s;
+            } .newCellInput:hover {
+                background-color: rgb(206, 206, 206);
+                letter-spacing: 5px;
+            }
+            </style>
+    </head>
+    <body id="body" onload="PageLoadEffect()">
+
+        <h1>TABLE  MAKER</h1>
+        <nav><a href="src_code.html">Source code</a> | <a href="mailto:abdelhusseinalt@gmail.com">Email developer</a></nav>
+
+
+       
+
+
+        <br>
+        <hr>
+        <div id= "tableEditButtons">
+            <button id="button_tableAddRow" onclick="AddRow()">Add Row</button>
+            <button id="button_tableAddColumn" onclick="AddColumn()">Add Column</button>
+            <button id="button_tableReloadButton" onclick="ReloadTable()">Reload Table</button>
+        </div>
+
+        
+        
+        <br>
+        <div><table id="table" cell-padding="0px" cell-padding="15px">
+        </table></div>
+
+
+        <script async defer>
+            const addRowButton = document.getElementById("button_tableAddRow");
+            const addColumnButton = document.getElementById("button_tableAddColumn");
+            
+            const table = document.getElementById("table");
+            
+            let rowCount = 0;
+            let columnCount = 0;
+            
+            let newRow;
+            let node;
+            
+            AddRow();
+            
+            
+            function AddRow() {
+                if (rowCount < 30) {
+                    rowCount++;
+                    console.log("Added row " + rowCount);
+            
+                    newRow = document.createElement("tr");
+                    node = document.createElement("input");
+                    // newRow.appendChild(node);
+                    NewCellHandle();
+                    table.appendChild(newRow);
+            
+                    newColumn = document.createElement("td");
+                    node = document.createElement("input");
+                    NewCellHandle();
+            
+                    newColumn.appendChild(node);
+                    table.appendChild(newColumn); 
+                    
+            
+                } else {
+                    console.log("Cannot add row! 30 is the maximum!");
+                    addRowButton.innerHTML = "Max reached";
+            
+            
+                }
+            
+            }
+            function AddColumn() {
+                if (columnCount < 50) {
+                    columnCount++;
+                    console.log("Added column " + columnCount);
+            
+                    newColumn = document.createElement("td");
+                    node = document.createElement("input");
+                    NewCellHandle();
+            
+                    newColumn.appendChild(node);
+                    table.appendChild(newColumn); 
+                    
+                } else {
+                    console.log("Cannot add column! 50 is the maximum!");
+                    addColumnButton.innerHTML = "Max reached";
+            
+            
+                }
+            
+            }
+            function ReloadTable() {
+                location.reload();
+            
+            }
+            
+            
+            function NewCellHandle() {
+                node.className = "newCellInput";
+                
+                node.style.width = "100%";
+                console.log(node.className);
+            
+                table.style.borderCollapse = "collapse";
+            }
+            
+            
+            // Called when page is loaded (opacity effect)
+            function PageLoadEffect() {
+                document.body.style.opacity = 0;
+                const bodyElem = document.getElementById("body");
+                let opac = 0;
+            
+                let intervalNum = 2;
+                let inter = setInterval(frame, intervalNum);
+            
+                function frame() {
+                    if (opac == 100) {
+                        clearInterval(inter);
+                    } else {
+                        document.body.style.opacity = opac / 100;
+                        opac++;
+                    }
+            
+                }
+            }
+            </script>
+            
+    </body>
+</html>
